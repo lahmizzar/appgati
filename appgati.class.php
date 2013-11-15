@@ -202,25 +202,25 @@ class AppGati {
       $array['Clock time in seconds'] = $results['time'];
       $array['Time taken in User Mode in seconds'] = $results['usage']['ru_utime.tv'];
       $array['Time taken in System Mode in seconds'] = $results['usage']['ru_stime.tv'];
-      $array['Total time taken in Kernel in seconds'] = 
-            $results['usage']['ru_stime.tv'] + $results['usage']['ru_utime.tv'];
+      $array['Total time taken in Kernel in seconds'] = $results['usage']['ru_stime.tv'] + $results['usage']['ru_utime.tv'];
       $array['Memory limit in MB'] = str_replace('M', '', ini_get('memory_limit'));
-      $array['Memory usage in MB'] = $results['memory'];
-      $array['Peak memory usage in MB'] = $results['peak_memory'];
-      $array['Average server load in last minute'] = $load['0'];
-      $array['Maximum resident shared size in KB'] = $results['usage']['ru_maxrss'];
-      $array['Integral shared memory size'] = $results['usage']['ru_ixrss'];
-      $array['Integral unshared data size'] = $results['usage']['ru_idrss'];
-      $array['Integral unshared stack size'] = $results['usage']['ru_isrss'];
-      $array['Number of page reclaims'] = $results['usage']['ru_minflt'];
-      $array['Number of page faults'] = $results['usage']['ru_majflt'];
-      $array['Number of block input operations'] = $results['usage']['ru_inblock'];
-      $array['Number of block output operations'] = $results['usage']['ru_outblock'];
-      $array['Number of messages sent'] = $results['usage']['ru_msgsnd'];
-      $array['Number of messages received'] = $results['usage']['ru_msgrcv'];
-      $array['Number of signals received'] = $results['usage']['ru_nsignals'];
-      $array['Number of voluntary context switches'] = $results['usage']['ru_nvcsw'];
-      $array['Number of involuntary context switches'] = $results['usage']['ru_nivcsw'];
+
+      $array['Memory usage in MB'] = isset( $results['memory'] ) ? $results['memory'] : 'N/A';
+      $array['Peak memory usage in MB'] = isset( $results['peak_memory'] ) ? $results['peak_memory'] : 'N/A';
+      $array['Average server load in last minute'] = isset( $load['0'] ) ? $load['0'] : 'N/A';
+      $array['Maximum resident shared size in KB'] = isset( $results['usage']['ru_maxrss'] ) ? $results['usage']['ru_maxrss'] : 'N/A';
+      $array['Integral shared memory size'] = isset( $results['usage']['ru_ixrss'] ) ? $results['usage']['ru_ixrss'] : 'N/A';
+      $array['Integral unshared data size'] = isset( $results['usage']['ru_idrss'] ) ? $results['usage']['ru_idrss'] : 'N/A';
+      $array['Integral unshared stack size'] = isset( $results['usage']['ru_isrss']) ? $results['usage']['ru_isrss'] : 'N/A';
+      $array['Number of page reclaims'] = isset( $results['usage']['ru_minflt'] ) ? $results['usage']['ru_minflt'] : 'N/A';
+      $array['Number of page faults'] = isset( $results['usage']['ru_majflt'] ) ? $results['usage']['ru_majflt'] : 'N/A';
+      $array['Number of block input operations'] = isset( $results['usage']['ru_inblock'] ) ? $results['usage']['ru_inblock'] : 'N/A';
+      $array['Number of block output operations'] = isset( $results['usage']['ru_outblock'] ) ? $results['usage']['ru_outblock'] : 'N/A';
+      $array['Number of messages sent'] = isset( $results['usage']['ru_msgsnd'] ) ? $results['usage']['ru_msgsnd'] : 'N/A';
+      $array['Number of messages received'] = isset( $results['usage']['ru_msgrcv'] ) ? $results['usage']['ru_msgrcv'] : 'N/A';
+      $array['Number of signals received'] = isset( $results['usage']['ru_nsignals'] ) ? $results['usage']['ru_nsignals'] : 'N/A';
+      $array['Number of voluntary context switches'] = isset( $results['usage']['ru_nvcsw'] ) ? $results['usage']['ru_nvcsw'] : 'N/A';
+      $array['Number of involuntary context switches'] = isset( $results['usage']['ru_nivcsw'] ) ? $results['usage']['ru_nivcsw'] : 'N/A';
       return $array;
     }
     catch(Exception $e) {
